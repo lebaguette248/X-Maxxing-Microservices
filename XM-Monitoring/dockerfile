@@ -1,0 +1,186 @@
+# Multi-stage build for Grafana Loki Monitoring Service
+FROM grafana/loki:2.9.3 AS loki
+
+FROM grafana/promtail:2.9.3 AS promtail
+
+FROM grafana/grafana:10.2.3 AS grafana
+
+# Final combined image for the monitoring service
+FROM alpine:3.19
+
+# Install required packages
+RUN apk add --no-cache \
+    ca-certificates \
+    tzdata \
+    supervisor \
+    curl
+
+# Create directory structure
+RUN mkdir -p /loki /promtail /grafana /var/log/supervisor \
+    /etc/loki /etc/promtail /etc/grafana
+
+# Copy Loki binary and set permissions
+COPY --from=loki /usr/bin/loki /usr/bin/loki
+RUN chmod +x /usr/bin/loki
+
+# Copy Promtail binary and set permissions
+COPY --from=promtail /usr/bin/promtail /usr/bin/promtail
+RUN chmod +x /usr/bin/promtail
+
+# Copy Grafana files
+COPY --from=grafana /usr/share/grafana /usr/share/grafana
+COPY --from=grafana /etc/grafana /etc/grafana
+
+# Create Loki configuration
+RUN cat > /etc/loki/config.yaml <<'EOF'
+auth_enabled: false
+
+server:
+  http_listen_port: 3100
+  grpc_listen_port: 9096
+
+common:
+  path_prefix: /loki
+  storage:
+    filesystem:
+      chunks_directory: /loki/chunks
+      rules_directory: /loki/rules
+  replication_factor: 1
+  ring:
+    instance_addr: 127.0.0.1
+    kvstore:
+      store: inmemory
+
+schema_config:
+  configs:
+    - from: 2020-10-24
+      store: boltdb-shipper
+      object_store: filesystem
+      schema: v11
+      index:
+        prefix: index_
+        period: 24h
+
+ruler:
+  alertmanager_url: http://localhost:9093
+
+analytics:
+  reporting_enabled: false
+EOF
+
+# Create Promtail configuration
+RUN cat > /etc/promtail/config.yaml <<'EOF'
+server:
+  http_listen_port: 9080
+  grpc_listen_port: 0
+
+positions:
+  filename: /tmp/positions.yaml
+
+clients:
+  - url: http://localhost:3100/loki/api/v1/push
+
+scrape_configs:
+  - job_name: docker
+    docker_sd_configs:
+      - host: unix:///var/run/docker.sock
+        refresh_interval: 5s
+    relabel_configs:
+      - source_labels: ['__meta_docker_container_name']
+        regex: '/(.*)'
+        target_label: 'container'
+      - source_labels: ['__meta_docker_container_log_stream']
+        target_label: 'stream'
+      - source_labels: ['__meta_docker_container_label_com_docker_compose_service']
+        target_label: 'service'
+EOF
+
+# Create Grafana datasource provisioning
+RUN mkdir -p /etc/grafana/provisioning/datasources && \
+    cat > /etc/grafana/provisioning/datasources/loki.yaml <<'EOF'
+apiVersion: 1
+
+datasources:
+  - name: Loki
+    type: loki
+    access: proxy
+    url: http://localhost:3100
+    isDefault: true
+    editable: false
+EOF
+
+# Create Grafana configuration
+RUN cat > /etc/grafana/grafana.ini <<'EOF'
+[server]
+http_port = 3000
+domain = localhost
+
+[security]
+admin_user = admin
+admin_password = admin
+
+[auth.anonymous]
+enabled = false
+
+[analytics]
+reporting_enabled = false
+check_for_updates = false
+
+[log]
+mode = console
+level = info
+EOF
+
+# Create supervisor configuration
+RUN cat > /etc/supervisord.conf <<'EOF'
+[supervisord]
+nodaemon=true
+user=root
+logfile=/var/log/supervisor/supervisord.log
+pidfile=/var/run/supervisord.pid
+
+[program:loki]
+command=/usr/bin/loki -config.file=/etc/loki/config.yaml
+autostart=true
+autorestart=true
+stderr_logfile=/var/log/supervisor/loki.err.log
+stdout_logfile=/var/log/supervisor/loki.out.log
+priority=10
+
+[program:promtail]
+command=/usr/bin/promtail -config.file=/etc/promtail/config.yaml
+autostart=true
+autorestart=true
+stderr_logfile=/var/log/supervisor/promtail.err.log
+stdout_logfile=/var/log/supervisor/promtail.out.log
+priority=20
+
+[program:grafana]
+command=/usr/share/grafana/bin/grafana-server --config=/etc/grafana/grafana.ini --homepath=/usr/share/grafana
+autostart=true
+autorestart=true
+stderr_logfile=/var/log/supervisor/grafana.err.log
+stdout_logfile=/var/log/supervisor/grafana.out.log
+priority=30
+environment=GF_PATHS_DATA="/var/lib/grafana",GF_PATHS_LOGS="/var/log/grafana",GF_PATHS_PLUGINS="/var/lib/grafana/plugins",GF_PATHS_PROVISIONING="/etc/grafana/provisioning"
+EOF
+
+# Create necessary directories for Grafana
+RUN mkdir -p /var/lib/grafana /var/log/grafana /var/lib/grafana/plugins && \
+    chmod -R 777 /var/lib/grafana /var/log/grafana
+
+# Expose ports
+# 3000: Grafana UI
+# 3100: Loki API
+# 9080: Promtail metrics
+EXPOSE 3000 3100 9080
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+    CMD curl -f http://localhost:3000/api/health || exit 1
+
+# Create volumes
+VOLUME ["/loki", "/var/lib/grafana"]
+
+# Start supervisor
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
