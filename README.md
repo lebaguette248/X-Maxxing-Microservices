@@ -15,14 +15,6 @@
 
 ---
 
-## 3. Neuen Branch erstellen
-
-1. `git switch -c <branch Name>` → Erstellt und wechselt direkt
-oder
-1. `git branch <branch Name>`
-2. `git switch <branch Name>`
-
----
 
 ## 4. Aktuellen Status prüfen
 
@@ -36,6 +28,7 @@ oder
 
 1. `git diff` → Nicht gestagte Änderungen
 2. `git diff --staged` → Gestagte Änderungen
+3. `git diff --name-only`nur Dateinamen
 
 ---
 
@@ -62,4 +55,33 @@ oder
 
 ---
 
-Wenn du willst, kann ich dir auch eine Version mit typischen Workflows (Feature Branch Flow, Hotfix Flow etc.) ergänzen.
+
+🔀 Branch mergen
+1️⃣ Auf den Ziel-Branch wechseln
+
+(Der Branch, in den gemerged werden soll, dev)
+1. `git pull`
+2. `git switch dev`
+
+2️⃣ Merge ausführen
+1. `git merge <branch-name>`
+
+Beispiel:
+1. `git merge 1-monitoring` 
+
+3️⃣ Falls es keine Konflikte gibt
+Git erstellt automatisch einen Merge-Commit → danach:
+
+1. `git push`
+
+4️⃣ Falls es Konflikte gibt 🧨
+Dateien mit Konflikten bearbeiten
+Konflikt-Markierungen entfernen (<<<<, ====, >>>>) <br>
+Dann:
+
+1. `git add <datei>`
+2. `git commit`
+
+Danach:
+
+1. `git push`
