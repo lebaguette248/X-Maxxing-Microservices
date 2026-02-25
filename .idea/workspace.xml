@@ -4,116 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d3c17686-6000-43a8-81d3-c929e4ef3226" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/X-Maxxing-Microservices.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/copilot.data.migration.ask2agent.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/logs/task-management-service.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/logs/task-management-service.log.2026-02-11.0.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/src/main/java/com/taskmanagement/TaskManagementServiceApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/src/main/java/com/taskmanagement/config/OpenApiConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/src/main/java/com/taskmanagement/controller/GoalController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/src/main/java/com/taskmanagement/controller/HealthController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/src/main/java/com/taskmanagement/controller/TaskController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/src/main/java/com/taskmanagement/dto/request/GoalRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/src/main/java/com/taskmanagement/dto/request/TaskRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/src/main/java/com/taskmanagement/dto/response/ApiResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/src/main/java/com/taskmanagement/dto/response/GoalResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/src/main/java/com/taskmanagement/dto/response/TaskResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/src/main/java/com/taskmanagement/entity/BaseEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/src/main/java/com/taskmanagement/entity/Goal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/src/main/java/com/taskmanagement/entity/Task.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/src/main/java/com/taskmanagement/exception/Exceptions.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/src/main/java/com/taskmanagement/exception/GlobalExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/src/main/java/com/taskmanagement/repository/GoalRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/src/main/java/com/taskmanagement/repository/TaskRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/src/main/java/com/taskmanagement/service/GoalService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/src/main/java/com/taskmanagement/service/TaskService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/src/main/java/com/taskmanagement/service/impl/GoalServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/src/main/java/com/taskmanagement/service/impl/TaskServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/TaskManagementServiceApplication.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/config/OpenApiConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/controller/GoalController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/controller/HealthController$HealthStatus$HealthStatusBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/controller/HealthController$HealthStatus.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/controller/HealthController$ServiceInfo$ServiceInfoBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/controller/HealthController$ServiceInfo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/controller/HealthController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/controller/TaskController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/dto/request/GoalRequest$Create$CreateBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/dto/request/GoalRequest$Create.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/dto/request/GoalRequest$Filter$FilterBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/dto/request/GoalRequest$Filter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/dto/request/GoalRequest$StatusUpdate$StatusUpdateBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/dto/request/GoalRequest$StatusUpdate.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/dto/request/GoalRequest$Update$UpdateBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/dto/request/GoalRequest$Update.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/dto/request/GoalRequest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/dto/request/TaskRequest$BulkCreate$BulkCreateBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/dto/request/TaskRequest$BulkCreate.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/dto/request/TaskRequest$Create$CreateBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/dto/request/TaskRequest$Create.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/dto/request/TaskRequest$ReorderRequest$ReorderRequestBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/dto/request/TaskRequest$ReorderRequest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/dto/request/TaskRequest$StatusUpdate$StatusUpdateBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/dto/request/TaskRequest$StatusUpdate.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/dto/request/TaskRequest$TaskItem$TaskItemBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/dto/request/TaskRequest$TaskItem.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/dto/request/TaskRequest$TaskOrder$TaskOrderBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/dto/request/TaskRequest$TaskOrder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/dto/request/TaskRequest$Update$UpdateBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/dto/request/TaskRequest$Update.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/dto/request/TaskRequest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/dto/response/ApiResponse$ApiResponseBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/dto/response/ApiResponse$PageInfo$PageInfoBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/dto/response/ApiResponse$PageInfo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/dto/response/ApiResponse.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/dto/response/GoalResponse$GoalResponseBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/dto/response/GoalResponse$GoalStats$GoalStatsBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/dto/response/GoalResponse$GoalStats.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/dto/response/GoalResponse$Simple$SimpleBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/dto/response/GoalResponse$Simple.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/dto/response/GoalResponse.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/dto/response/TaskResponse$Simple$SimpleBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/dto/response/TaskResponse$Simple.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/dto/response/TaskResponse$TaskResponseBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/dto/response/TaskResponse.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/entity/BaseEntity.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/entity/Goal$GoalBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/entity/Goal$GoalStatus.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/entity/Goal$Priority.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/entity/Goal.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/entity/Task$Priority.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/entity/Task$TaskBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/entity/Task$TaskStatus.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/entity/Task.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/exception/Exceptions$BadRequestException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/exception/Exceptions$ForbiddenException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/exception/Exceptions$InternalServerException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/exception/Exceptions$ResourceAlreadyExistsException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/exception/Exceptions$ResourceNotFoundException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/exception/Exceptions$UnauthorizedException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/exception/Exceptions.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/exception/GlobalExceptionHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/repository/GoalRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/repository/TaskRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/service/GoalService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/service/TaskService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/service/impl/GoalServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/classes/com/taskmanagement/service/impl/TaskServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+    <list default="true" id="d3c17686-6000-43a8-81d3-c929e4ef3226" name="Changes" comment="Initialize task management service with basic structure and configurations">
+      <change beforePath="$PROJECT_DIR$/logs/task-management-service.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/task-management-service.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,6 +47,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Maven.task-management-service [compile].executor": "Run",
     "Maven.task-management-service [install].executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
@@ -199,8 +92,25 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1772022938654</updated>
-      <workItem from="1772022939960" duration="1060000" />
+      <workItem from="1772022939960" duration="1403000" />
     </task>
+    <task id="LOCAL-00001" summary="Initialize task management service with basic structure and configurations">
+      <option name="closed" value="true" />
+      <created>1772024201892</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1772024201892</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Initialize task management service with basic structure and configurations">
+      <option name="closed" value="true" />
+      <created>1772024210353</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1772024210353</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,6 +126,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initialize task management service with basic structure and configurations" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initialize task management service with basic structure and configurations" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
