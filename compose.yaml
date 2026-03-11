@@ -1,5 +1,18 @@
-version: '3.8'
+version: "3.8"
+
 services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: password
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
 
   db:
     image: postgres:16
@@ -15,8 +28,6 @@ services:
       - db_data:/var/lib/postgresql/data
       - ./XM-llm/init.sql:/docker-entrypoint-initdb.d/init.sql
 
-
-
   expo:
     build: ./X-Maxxing
     environment:
@@ -29,7 +40,7 @@ services:
     volumes:
       - ./X-Maxxing:/app
     command: npx expo start --lan
-      
+
   ollama:
     image: ollama/ollama:latest
     container_name: ollama
@@ -45,11 +56,9 @@ services:
       ollama pull llama3.1:8b && 
       wait"
 
-
 volumes:
   db_data:
     driver: local
   ollama_data:
     driver: local
-
-  
+  rabbitmq_data:
