@@ -1,0 +1,64 @@
+version: "3.8"
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: password
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+
+  db:
+    image: postgres:16
+    container_name: llm_service_db
+    restart: always
+    environment:
+      POSTGRES_USER: llm_user
+      POSTGRES_PASSWORD: llm_password
+      POSTGRES_DB: llm_database
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./XM-llm/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  expo:
+    build: ./X-Maxxing
+    environment:
+      EXPO_PUBLIC_XM_URL: http://localhost:3000
+    ports:
+      - "8081:8081"
+      - "19000:19000"
+      - "19001:19001"
+      - "19002:19002"
+    volumes:
+      - ./X-Maxxing:/app
+    command: npx expo start --lan
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: unless-stopped
+    # Pull and run llama3.1:8b on startup
+    command: >
+      sh -c "ollama serve & 
+      sleep 5 && 
+      ollama pull llama3.1:8b && 
+      wait"
+
+volumes:
+  db_data:
+    driver: local
+  ollama_data:
+    driver: local
+  rabbitmq_data:
